@@ -4,7 +4,7 @@
   "description": "Pizza ordering app",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon -e js,ejs,html -w . -w public -w views -w routes -w models server.js",
+    "start": "node server.js",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "npm run development -- --watch",
     "prod": "npm run production",
