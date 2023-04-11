@@ -1,0 +1,34 @@
+
+<div class="paymentPageWrapper">
+	<div class="card">
+		<div class="title">Payment Successful!</div>
+		
+		<div class="cardContent">
+			<p class="gratitude ">Thanks for ordering from PizzaHub, enjoy your meal.</p>
+			<div class="cardItems">
+				<div class="eachItem">
+					<p class="bold">Order ID: </p>
+					<p class="propertyValue"> <%- paymentDetail.orderID %></p>
+				</div>
+				<div class="eachItem">
+					<p class="bold">Transaction ID: </p>
+					<p class="propertyValue"> <%- paymentDetail.paymentID %></p>
+				</div>
+				<!-- <div class="eachItem">
+					<p class="bold">Signature: </p>
+					<p class="propertyValue"> <%- paymentDetail.signature %></p>
+				</div> -->
+				<div class="eachItem">
+					<p class="bold">Amount: </p>
+					<p class="propertyValue"> <%- paymentDetail.amount/100 %> Rs.</p>
+				</div>
+				<div class="eachItem">
+					<p class="bold">Created at: </p>
+					<p class="propertyValue"> <%- moment(paymentDetail.createdAt).format('MMMM Do YYYY, h:mm a') %></p>
+				</div>
+			</div>
+		</div>
+
+		<a href="/customer-order" type="button" class="inline-block align-baseline font-bold text-sm btn-primary rounded-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline paymentBtn">My Orders</a>
+	</div>
+</div>

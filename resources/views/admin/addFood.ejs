@@ -1,0 +1,61 @@
+<section class="login flex justify-center items-center pt-24">
+    <div class="w-full max-w-xs">
+        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 addFoodWalaForm">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    Name
+                </label>
+                <input name="name"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="name" type="text" placeholder="Enter name of food", required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="foodType">
+                    Food Type
+                </label>
+                <input name="foodType"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="foodType" type="text" placeholder="Enter food type", required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="foodPhoto">
+                    Image
+                </label>
+                <input name="foodPhoto"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="foodPhoto" type="file" accept="image/*">
+            </div>
+            <div class="mb-4">
+                <input name="isVeg" type="checkbox" id="isVeg">
+                <label class="text-gray-700 text-sm font-bold mb-2" for="isVeg"> Is this food item veg ?</label><br>
+
+                <input name="halfFull" type="checkbox" id="halfFull">
+                <label class="text-gray-700 text-sm font-bold mb-2" for="halfFull"> Want to add Half/Full size option ? </label><br>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="price">
+                    Price
+                </label>
+                <input name="price"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="price" type="number" placeholder="Enter price of food", required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+                    Description
+                </label>
+                <input name="description"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="description" type="text" placeholder="Enter description of food", required>
+            </div>
+            
+        
+            <div class="flex items-center justify-between">
+                <button
+                    class="btn-primary rounded-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Add Item to Menu
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

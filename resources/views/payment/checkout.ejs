@@ -1,0 +1,66 @@
+
+<div class="paymentPageWrapper">
+	<div class="card">
+		<div class="title">Confirm Order</div>
+		
+		<div class="cardContent">
+			<p class="gratitude ">Thanks for ordering. This payment portal is 100% secure :)</p>
+			<div class="cardItems">
+				<div class="eachItem">
+					<p class="bold">Order ID: </p>
+					<p class="propertyValue"> <%- paymentDetail.orderID %></p>
+				</div>
+				<div class="eachItem">
+					<p class="bold">Currency: </p>
+					<p class="propertyValue"> <%- paymentDetail.currency %></p>
+				</div>
+				<div class="eachItem">
+					<p class="bold">Amount: </p>
+					<p class="propertyValue"> <%- paymentDetail.amount/100 %> Rs.</p>
+				</div>
+			</div>
+		</div>
+
+		<button type="submit" class="btn-primary rounded-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline paymentBtn" onclick="checkout(event)">Checkout</button>
+	</div>
+	<form id="paymentVerifyForm" action="/payment/verify" method="POST">
+		<input name="razorpay_payment_id" type="hidden" id="razorpay_payment_id" />
+		<input name="razorpay_order_id" type="hidden" id="razorpay_order_id"/>
+		<input name="razorpay_signature" type="hidden" id="razorpay_signature"/>
+	</form>
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+	function checkout(event) {
+		const razorpayKeyID = '<%- razorpayKeyID %>'
+		const orderID = '<%- JSON.stringify(paymentDetail.orderID) %>'
+		const options = {
+			"key": razorpayKeyID,
+			"currency": "INR",
+			"name": "PizzaHub",
+			"description": "Online transaction portal",
+			
+			// "image": "{YOUR LOGO IMAGE LINK}",
+			
+			"order_id": JSON.parse(orderID),
+			"handler": function (response){
+				document.getElementById('razorpay_payment_id').value= response.razorpay_payment_id;
+				document.getElementById('razorpay_order_id').value= response.razorpay_order_id;
+				document.getElementById('razorpay_signature').value= response.razorpay_signature;
+				document.getElementById("paymentVerifyForm").submit();
+			},
+			"modal": {
+				ondismiss: function() {
+					alert(`Payment Failed`)
+				}
+			},
+			"theme": {
+				"color": "#FE5F1E"
+			}
+		};
+		const razorpay = new Razorpay(options);
+		razorpay.open();
+		event.preventDefault();
+	}
+</script>

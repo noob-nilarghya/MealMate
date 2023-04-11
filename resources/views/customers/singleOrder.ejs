@@ -1,0 +1,76 @@
+<section class="status">
+    <div class="container mx-auto" style="padding-top: 1rem; min-height: 70vh;">
+        <% for(let pizza of Object.values(order.items)){ %>
+            <% if(pizza.Half){ %>
+                <div class="flex items-center my-8">
+                    <img class="w-24 cartImg" src="/img/foodPic/<%= pizza.Half.item.image %>" alt="pizza">
+                    <div class="flex-1 ml-4">
+                        <h1>
+                            <%= pizza.Half.item.name %>
+                        </h1>
+                            <span>
+                                Half
+                            </span>
+                    </div>
+                    <span class="flex-1">
+                        <%= pizza.Half.qty %> Pcs
+                    </span>
+                    <span class="font-bold text-lg">₹<%= pizza.Half.item.price %> X <%= pizza.Half.qty %> = <%= pizza.Half.item.price * pizza.Half.qty %> </span>
+                </div>
+            <% } %>
+            <div class="flex items-center my-8">
+                <img class="w-24 cartImg" src="/img/foodPic/<%= pizza.Full.item.image %>" alt="pizza">
+                <div class="flex-1 ml-4">
+                    <h1>
+                        <%= pizza.Full.item.name %>
+                    </h1>
+                        <span>
+                            Full
+                        </span>
+                </div>
+                <span class="flex-1">
+                    <%= pizza.Full.qty %> Pcs
+                </span>
+                <span class="font-bold text-lg">₹<%= pizza.Full.item.price %> X <%=pizza.Full.qty %> = <%= pizza.Full.item.price * pizza.Full.qty %> </span>
+            </div>
+        <% } %>
+        <% if(!(order.status === 'cancelled' || order.status === 'refunded' || order.status === 'reject-refund')){ %>
+            <div class="status-box w-full lg:w-2/3 mx-auto">
+                <div class="flex items-center justify-between mb-12">
+                    <h1 class="text-xl font-bold">Track delivery status</h1>
+                    <h6 class="bg-white py-1 rounded-full px-4 text-green-600 text-xs"><%=order._id %></h6>
+                    <!-- As we need to update order-status programetically, so to pass order from server to frontend (app.js), we pass order as 'value' attribute of this hidden input -->
+                    <input id="hiddenInput" type="hidden" value="<%= JSON.stringify(order) %>">
+                </div>
+                <ul>
+                    <!-- We need to add class 'step-completed' and 'current' programmatically -->
+
+                    <li class="status_line text-sm md:text-xl pb-16" data-status="order_placed"><span>Order Placed</span></li>
+                    <li class="status_line text-sm md:text-xl pb-16" data-status="confirmed"><span>Order confirmation</span></li>
+                    <li class="status_line text-sm md:text-xl pb-16" data-status="prepared"><span>Preparation</span></li>
+                    <li class="status_line text-sm md:text-xl pb-16" data-status="delivered"><span>Out for delivery </span></li>
+                    <li class="status_line text-sm md:text-xl" data-status="completed"><span>Complete</span></li>
+                </ul>
+            </div>
+        <% } %>
+        <div style="display: flex; flex-direction: column; justify-content: center; margin-top: 2rem;">
+            <% if(order.status === 'cancelled' && order.paymentType === 'COD'){ %>
+                <p style="text-align: center; font-weight: 700;">Your order has been cancelled successfully</p>
+            <% } else if(order.status === 'cancelled' && order.paymentType === 'online'){ %>
+                <p style="text-align: center; font-weight: 700;">Refund request submitted successfully. Action will be taken soon.</p>
+            <% } else if(order.status === 'refunded'){ %>
+                <p style="text-align: center; font-weight: 700;">Refund has been initiated successfully.</p>
+            <% } else if(order.status === 'reject-refund'){ %>
+                <p style="text-align: center; font-weight: 700;">Sorry, your refund request is declined. This can't be refunded.</p>
+            <% } %>
+            <div style="display: flex; justify-content: center; margin-top: 2rem; gap: 0.3rem;">
+                <% if(order.status === 'confirmed' || order.status === 'order_placed'){ %>
+                    <a data-order="<%= JSON.stringify(order) %>" class="inline-block cursor-pointer btn-primary px-6 py-2 rounded-full text-white font-bold mt-6 singleOrder-MyOrder cancelOrderBtn">Cancel Order</a>
+                <% } %>
+                <a href="/customer-order" class="inline-block cursor-pointer btn-primary px-6 py-2 rounded-full text-white font-bold mt-6 singleOrder-MyOrder">My Orders</a>
+            </div>
+        </div>
+
+    </div>
+    
+</section>

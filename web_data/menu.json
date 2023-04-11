@@ -1,0 +1,281 @@
+[
+    {
+        "name": "Chana Masala",
+        "foodType": "Main Course",
+        "image": "ChanaMasala.jpg",
+        "halfFull": true,
+        "isVeg": true,
+        "price": 75,
+        "description": "Made with chickpeas, onion, tomatoe, and an array of aromatic spices such as cumin, coriander, turmeric, and garam masala."
+    },
+    {
+        "name": "Dal Tadka",
+        "foodType": "Main Course",
+        "image": "DalTadka.jpg",
+        "halfFull": true,
+        "isVeg": true,
+        "price": 75,
+        "description": "Made by heating oil or ghee in a separate pan and then adding spices such as cumin, mustard seeds, and red chili powder."
+    },
+    {
+        "name": "Aloo Dum",
+        "foodType": "Main Course",
+        "image": "AlooDum.jpg",
+        "halfFull": true,
+        "isVeg": true,
+        "price": 50,
+        "description": "Consists of boiled or fried potatoes cooked in a spiced tomato-based sauce, combined with a mixture of onion, tomato, ginger, and garlic."
+    },
+    {
+        "name": "Aloo Matar",
+        "foodType": "Main Course",
+        "image": "AlooMatar.jpg",
+        "halfFull": true,
+        "isVeg": true,
+        "price": 50,
+        "description": "Consists of fried potatoes and green peas cooked in a spiced tomato-based sauce, which then flavored with aromatic spices."
+    },
+    {
+        "name": "Mix Veg",
+        "foodType": "Main Course",
+        "image": "MixVeg.jpg",
+        "halfFull": true,
+        "isVeg": true,
+        "price": 80,
+        "description": "Consists of a variety of vegetables cooked together in a spiced tomato-based sauce."
+    },
+    {
+        "name": "Matar Paneer",
+        "foodType": "Main Course",
+        "image": "MatarPaneer.jpg",
+        "halfFull": true,
+        "isVeg": true,
+        "price": 90,
+        "description": "Consists of green peas and paneer (Indian cottage cheese) cooked in a spiced tomato-based sauce."
+    },
+    {
+        "name": "Paneer Butter Masala",
+        "foodType": "Main Course",
+        "image": "PaneerButterMasala.jpg",
+        "halfFull": true,
+        "isVeg": true,
+        "price": 100,
+        "description": "Consists of paneer (Indian cottage cheese) cooked in a creamy tomato-based sauce."
+    },
+    {
+        "name": "Chilli Paneer",
+        "foodType": "Main Course",
+        "image": "ChilliPaneer.jpg",
+        "halfFull": true,
+        "isVeg": true,
+        "price": 100,
+        "description": "Consists of deep-fried paneer (Indian cottage cheese) cubes that are cooked in a spicy, sweet, and tangy sauce."
+    },
+    {
+        "name": "Chicken Curry",
+        "foodType": "Main Course",
+        "image": "ChickenCurry.jpg",
+        "halfFull": true,
+        "isVeg": false,
+        "price": 110,
+        "description": "Consists of chicken cooked in a spiced sauce, made by frying onion, tomato, ginger, and garlic in oil or ghee."
+    },
+    {
+        "name": "Chicken Kosha",
+        "foodType": "Main Course",
+        "image": "ChickenKosha.jpg",
+        "halfFull": true,
+        "isVeg": false,
+        "price": 110,
+        "description": "The chicken is typically marinated with yogurt, ginger, garlic, and a blend of spices such as cumin, coriander, turmeric, and garam masala."
+    },
+    {
+        "name": "Chicken Butter Masala",
+        "foodType": "Main Course",
+        "image": "ChickenButterMasala.jpg",
+        "halfFull": true,
+        "isVeg": false,
+        "price": 120,
+        "description": "Consists of tender pieces of chicken cooked in a rich and creamy tomato-based sauce."
+    },
+    {
+        "name": "Chilli Chicken",
+        "foodType": "Main Course",
+        "image": "ChilliChicken.jpg",
+        "halfFull": true,
+        "isVeg": false,
+        "price": 120,
+        "description": "Made with vegetables such as capsicum, onion, and carrot, has more sauce, which is thicker."
+    },
+    {
+        "name": "Egg Curry",
+        "foodType": "Main Course",
+        "image": "EggCurry.jpg",
+        "halfFull": true,
+        "isVeg": false,
+        "price": 70,
+        "description": "Made with boiled eggs that are simmered in a rich and spicy tomato-based sauce."
+    },
+    {
+        "name": "Egg Tadka",
+        "foodType": "Main Course",
+        "image": "EggTadka.jpg",
+        "halfFull": true,
+        "isVeg": false,
+        "price": 70,
+        "description": "Dish made with boiled eggs are mixed with tadka dal along with tomatoes, and garlic."
+    },
+    {
+        "name": "Fish Curry",
+        "foodType": "Main Course",
+        "image": "FishCurry.jpg",
+        "halfFull": true,
+        "isVeg": false,
+        "price": 100,
+        "description": "Consists of fish pieces cooked in a spicy and flavorful sauce made with onion, garlic, ginger, tomatoes, and a blend of spices."
+    },
+    {
+        "name": "Mutton Curry",
+        "foodType": "Main Course",
+        "image": "MuttonCurry.jpg",
+        "halfFull": true,
+        "isVeg": false,
+        "price": 135,
+        "description": "Made with tender chunks of mutton cooked in a flavorful and aromatic sauce consisting of onions, garlic, ginger, and tomatoes, which are sautéed in oil and spices and garam masala."
+    },
+    {
+        "name": "Veg Thali",
+        "foodType": "Thali",
+        "image": "VegThali.jpg",
+        "halfFull": false,
+        "isVeg": false,
+        "price": 120,
+        "description": "An exquisite thali consisting of Rice, 2 Roti, Dal Tadka, Papad, Aloo Bhujia, Mix Veg."
+    },
+    {
+        "name": "Chicken Thali",
+        "foodType": "Thali",
+        "image": "ChickenThali.jpg",
+        "halfFull": false,
+        "isVeg": false,
+        "price": 150,
+        "description": "An exquisite thali consisting of Rice, 2 Roti, Dal Tadka, Papad, Aloo Bhujia, Chicken Curry."
+    },
+    {
+        "name": "Egg Thali",
+        "foodType": "Thali",
+        "image": "EggThali.jpg",
+        "halfFull": false,
+        "isVeg": false,
+        "price": 130,
+        "description": "An exquisite thali consisting of Rice, 2 Roti, Dal Tadka, Papad, Aloo Bhujia, Egg Curry."
+    },
+    {
+        "name": "Fish Thali",
+        "foodType": "Thali",
+        "image": "FishThali.jpg",
+        "halfFull": false,
+        "isVeg": false,
+        "price": 140,
+        "description": "An exquisite thali consisting of Rice, 2 Roti, Dal Tadka, Papad, Aloo Bhujia, Fish Curry."
+    },
+    {
+        "name": "Mutton Thali",
+        "foodType": "Thali",
+        "image": "MuttonThali.jpg",
+        "halfFull": false,
+        "isVeg": false,
+        "price": 200,
+        "description": "An exquisite thali consisting of Rice, 2 Roti, Dal Tadka, Papad, Aloo Bhujia, Mutton Curry."
+    },
+    {
+        "name": "Aloo Biryani",
+        "foodType": "Biryani",
+        "image": "AlooBiryani.jpg",
+        "halfFull": false,
+        "isVeg": false,
+        "price": 55,
+        "description": "Aloo Biryani is a fragrant Indian rice dish made with spiced potatoes, basmati rice, and aromatic spices. Served with raita."
+    },
+    {
+        "name": "Egg Biryani",
+        "foodType": "Biryani",
+        "image": "EggBiryani.jpg",
+        "halfFull": false,
+        "isVeg": false,
+        "price": 60,
+        "description": "Egg Biryani is a fragrant Indian rice dish made with basmati rice and aromatic spices. Served with raita."
+    },
+    {
+        "name": "Chicken Biryani",
+        "foodType": "Biryani",
+        "image": "ChickenBiryani.jpg",
+        "halfFull": false,
+        "isVeg": false,
+        "price": 90,
+        "description": "Chicken Biryani is a fragrant Indian rice dish made with spiced chicken, basmati rice, and aromatic spices. Served with raita and 1 egg."
+    },
+    {
+        "name": "Mutton Biryani",
+        "foodType": "Biryani",
+        "image": "MuttonBiryani.jpg",
+        "halfFull": false,
+        "isVeg": false,
+        "price": 110,
+        "description": "Mutton Biryani is a fragrant Indian rice dish made with spiced mutton, basmati rice, and aromatic spices. Served with raita and 1 egg."
+    },
+    {
+        "name": "Luchi",
+        "foodType": "Rice/Roti",
+        "image": "Luchi.jpg",
+        "halfFull": false,
+        "isVeg": true,
+        "price": 5,
+        "description": "Simple Luchi"
+    },
+    {
+        "name": "Paratha",
+        "foodType": "Rice/Roti",
+        "image": "Paratha.jpg",
+        "halfFull": false,
+        "isVeg": true,
+        "price": 10,
+        "description": "Simple Paratha"
+    },
+    {
+        "name": "Tawa Roti",
+        "foodType": "Rice/Roti",
+        "image": "Roti.jpg",
+        "halfFull": false,
+        "isVeg": true,
+        "price": 4,
+        "description": "Simple Tawa Roti"
+    },
+    {
+        "name": "Rumali Roti",
+        "foodType": "Rice/Roti",
+        "image": "RumaliRoti.jpg",
+        "halfFull": false,
+        "isVeg": true,
+        "price": 7,
+        "description": "Simple Rumali Roti"
+    },
+    {
+        "name": "Boiled Rice",
+        "foodType": "Rice/Roti",
+        "image": "Rice.jpg",
+        "halfFull": true,
+        "isVeg": true,
+        "price": 25,
+        "description": "Simple Boiled Rice"
+    },
+    {
+        "name": "Fried Rice",
+        "foodType": "Rice/Roti",
+        "image": "FriedRice.jpg",
+        "halfFull": true,
+        "isVeg": true,
+        "price": 40,
+        "description": "Simple Fried Rice with lots of vegitable"
+    }
+]

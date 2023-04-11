@@ -1,0 +1,56 @@
+
+    <div class="wrapper menuWrapper">
+
+        <div class="menuHeadingAndSort">
+            <p class="MenuHeading heading-primary"> Our Menu </p>
+            <div class="menuSort">
+                <!-- 'Pizza', 'Main Course', 'Chinese', 'Thali', 'Biryani', 'Rice/Roti' -->
+                <a class="sortLink">Pizza</a>
+                <a class="sortLink">Main</a>
+                <a class="sortLink">Chinese</a>
+                <a class="sortLink">Thali</a>
+                <a class="sortLink">Biryani</a>
+                <a class="sortLink">Rice/Roti</a>
+            </div>
+        </div>
+        
+
+        <% pizzas.forEach(function(menus) { %>
+            <div class="cardWrapper" style="display: unset; height: 100%;">
+                <div class="Menucard">
+                    <img class="img-container" src="/img/foodPic/<%= menus.image %>" alt="foodImage">
+
+                    <div class="menuTxt" style="height: 100%;">
+                        <div class="text">
+                            <div class="food-heading">
+                                <% if(menus.isVeg == false) { %>
+                                    <img src="https://img.icons8.com/color-glass/48/000000/non-vegetarian-food-symbol.png"/>
+                                <% } else { %>
+                                    <img src="https://img.icons8.com/color-glass/48/000000/vegetarian-food-symbol.png"/>
+                                <% } %>
+                            
+                                <h2 style="font-weight: 500;"><%= menus.name %></h2>
+                            </div>
+                            
+                            <% if(menus.halfFull == true){ %>
+                                <div class="half-full">
+                                    <button class="btn btnHF half">Half</button>
+                                    <button class="btn btnHF full activeHF">Full</button>
+                                </div>
+                            <% } %>
+                            
+                            <p class="foodType" style="display: none;"><%=menus.foodType%></p>
+                            <p class="description" style="height: 100%;"><%= menus.description %></p>
+
+                            <div class="price-cart-container">
+                                <span class="price">₹<%= menus.price %></span>
+                                <button data-pizza="<%= JSON.stringify(menus) %>" class="btn-primary add-to-cart">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% })%>
+
+    
+    </div>

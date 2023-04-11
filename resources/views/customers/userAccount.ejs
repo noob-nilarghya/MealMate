@@ -1,0 +1,43 @@
+<div class="mainAcc" style="min-height: 65vh;">
+    <div class="updateOptions" style="max-height: 450px;">
+        <div class="roleDiv">Role: <p class="role"><%= user.role.toUpperCase() %></p></div>
+        <% if(user.role === 'user'){ %>
+            <a class="updateLink" href="/customer-order"><i class="las la-hamburger updateIcon"></i> My orders</a>
+        <% } else { %>
+            <a class="updateLink" href="/admin-order"><i class="las la-hamburger updateIcon"></i> Active Orders</a>
+            <a class="updateLink" href="/admin-order-refund-status"><i class="las la-hamburger updateIcon"></i> Refund Status</a>
+            <a class="updateLink" href="/admin-add-food"><i class="las la-plus updateIcon"></i></i> Add food to Menu</a>
+        <% } %>
+        <a class="updateLink" href="/update-info"><i class="las la-info updateIcon"></i>Update Info</a>
+        <a class="updateLink" href="/update-password"><i class="las la-key updateIcon"></i>Update Password</a>
+        <% if(user.role === 'user'){ %>
+            <a class="updateLink deactivateAcc"><i class="las la-user-alt-slash updateIcon"></i>Deactivate Account</a>
+            <a class="updateLink lastLink" href="mailto:roynilarghya@gmail.com?subject=MealMate%20||%20Query:%20" ><i class="las la-phone-alt updateIcon"></i>Contact Us</a>
+        <% } %>
+        
+    </div>
+    <div class="infoOverview" style="max-height: 450px;">
+        <div class="img-change">
+            <img class="userImg" src="/img/userPic/<%= user.photo %>" alt="user"> 
+        </div>
+        <div class="userInfo">
+            <div class="infoDiv">User Account Information</div>
+        </div>
+        <div class="firstName infoSec">
+            <p class="heading">First Name : </p>
+            <p class="infoContent"><%= user.username.split(' ')[0] %></p>
+        </div>
+        <div class="lastName infoSec">
+            <p class="heading">Last Name :</p>
+            <p class="infoContent"><%= user.username.split(' ')[1] %></p>
+        </div>
+        <div class="emailInfo infoSec">
+            <p class="heading">Email ID :</p>
+            <p class="infoContent"><%= user.email %></p>
+        </div>
+        <div class="phoneInfo infoSec">
+            <p class="heading">Phone Number :</p>
+            <p class="infoContent"><%= user.phone %></p>
+        </div>
+    </div>
+</div>

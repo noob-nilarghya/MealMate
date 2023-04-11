@@ -1,0 +1,173 @@
+<section class="orders light-section" style="min-height: 70vh;">
+    <div class="container mx-auto pt-12">
+        <h1 class="font-bold text-lg mb-4"> Refund-Required Orders </h1>
+
+        <% if(RefundRequiredOrder.length==0){ %>
+            <div style="display: flex; justify-content: center; padding: 2rem; font-weight: 700; font-size: 1.5rem;"> No results found </div>
+        <% } %>
+        
+        <table class="w-full table-auto bg-white">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 text-left">Orders</th>
+                    <th class="px-4 py-2 text-left">Customer</th>
+                    <th class="px-4 py-2 text-left">Phone</th>
+                    <th class="px-4 py-2 text-left">Address</th>
+                    <th class="px-4 py-2 text-left">Refund Status</th>
+                    <th class="px-4 py-2 text-left">Placed at</th>
+                </tr>
+            </thead>
+
+            
+            <tbody id="orderTableBody">
+                <% RefundRequiredOrder.forEach(function(order) { %>
+                    <tr>
+                        <td class="border px-4 py-2 text-green-900">
+                            <p><%= order._id %></p>
+                            <div>
+                                <% for(let menuItem of Object.values(order.items)){ %>
+                                    <% if(menuItem.Half){ %>
+                                        <p><%= menuItem.Half.item.name %>(H) - <%= menuItem.Half.qty %> pcs </p>
+                                    <% } %>
+                                    <p><%= menuItem.Full.item.name %>(F) - <%= menuItem.Full.qty %> pcs </p>
+                                <% } %>
+                            </div>
+                        </td>
+                        <td class="border px-4 py-2"><%= order.customerID.username %></td>
+                        <td class="border px-4 py-2"><%= order.phone %></td>
+                        <td class="border px-4 py-2"><%= order.address %></td>
+                        <td class="border px-4 py-2">
+                            <div class="inline-block relative w-64">
+
+                                <!-- This time, we will not going to do ajax (axios) call  -->
+                                <form action="/admin-order/refund-accept-decline" method="POST">
+                                    <input type="hidden" name="orderId" value="<%= order._id %>"> 
+                                    <!-- key is 'name', val is 'value', i.e order id will be available in req.body.orderId -->
+                                    <select name="status" onchange="this.form.submit()"
+                                        class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                                        <!-- status will be available in req.body.status -->
+
+                                        <option value="" selected> Select one </option>
+                                        <option value="refunded"> Accept </option>
+                                        <option value="reject-refund"> Decline </option>
+                                    </select>
+                                </form>
+
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="border px-4 py-2">
+                            <%= moment(order.createdAt).format('MMMM Do YYYY, h:mm a') %>
+                        </td>
+                    </tr>
+                <% }) %>
+                
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="container mx-auto pt-12">
+        <h1 class="font-bold text-lg mb-4"> Refunded Orders </h1>
+
+        <% if(RefundedOrder.length==0){ %>
+            <div style="display: flex; justify-content: center; padding: 2rem; font-weight: 700; font-size: 1.5rem;"> No results found </div>
+        <% } %>
+        
+        <table class="w-full table-auto bg-white">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 text-left">Orders</th>
+                    <th class="px-4 py-2 text-left">Customer</th>
+                    <th class="px-4 py-2 text-left">Phone</th>
+                    <th class="px-4 py-2 text-left">Address</th>
+                    <th class="px-4 py-2 text-left">Refund Status</th>
+                    <th class="px-4 py-2 text-left">Placed at</th>
+                </tr>
+            </thead>
+
+            
+            <tbody id="orderTableBody">
+                <% RefundedOrder.forEach(function(order) { %>
+                    <tr>
+                        <td class="border px-4 py-2 text-green-900">
+                            <p><%= order._id %></p>
+                            <div>
+                                <% for(let menuItem of Object.values(order.items)){ %>
+                                    <% if(menuItem.Half){ %>
+                                        <p><%= menuItem.Half.item.name %>(H) - <%= menuItem.Half.qty %> pcs </p>
+                                    <% } %>
+                                    <p><%= menuItem.Full.item.name %>(F) - <%= menuItem.Full.qty %> pcs </p>
+                                <% } %>
+                            </div>
+                        </td>
+                        <td class="border px-4 py-2"><%= order.customerID.username %></td>
+                        <td class="border px-4 py-2"><%= order.phone %></td>
+                        <td class="border px-4 py-2"><%= order.address %></td>
+                        <td class="border px-4 py-2">Refund Initiated &#10003;</td>
+                        <td class="border px-4 py-2">
+                            <%= moment(order.createdAt).format('MMMM Do YYYY, h:mm a') %>
+                        </td>
+                    </tr>
+                <% }) %>
+                
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="container mx-auto pt-12">
+        <h1 class="font-bold text-lg mb-4"> Refund Rejected Orders </h1>
+
+        <% if(RejectRefundedOrder.length==0){ %>
+            <div style="display: flex; justify-content: center; padding: 2rem; font-weight: 700; font-size: 1.5rem;"> No results found </div>
+        <% } %>
+        
+        <table class="w-full table-auto bg-white">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 text-left">Orders</th>
+                    <th class="px-4 py-2 text-left">Customer</th>
+                    <th class="px-4 py-2 text-left">Phone</th>
+                    <th class="px-4 py-2 text-left">Address</th>
+                    <th class="px-4 py-2 text-left">Refund Status</th>
+                    <th class="px-4 py-2 text-left">Placed at</th>
+                </tr>
+            </thead>
+
+            
+            <tbody id="orderTableBody">
+                <% RejectRefundedOrder.forEach(function(order) { %>
+                    <tr>
+                        <td class="border px-4 py-2 text-green-900">
+                            <p><%= order._id %></p>
+                            <div>
+                                <% for(let menuItem of Object.values(order.items)){ %>
+                                    <% if(menuItem.Half){ %>
+                                        <p><%= menuItem.Half.item.name %>(H) - <%= menuItem.Half.qty %> pcs </p>
+                                    <% } %>
+                                    <p><%= menuItem.Full.item.name %>(F) - <%= menuItem.Full.qty %> pcs </p>
+                                <% } %>
+                            </div>
+                        </td>
+                        <td class="border px-4 py-2"><%= order.customerID.username %></td>
+                        <td class="border px-4 py-2"><%= order.phone %></td>
+                        <td class="border px-4 py-2"><%= order.address %></td>
+                        <td class="border px-4 py-2">Refund Rejected &#10060;</td>
+                        <td class="border px-4 py-2">
+                            <%= moment(order.createdAt).format('MMMM Do YYYY, h:mm a') %>
+                        </td>
+                    </tr>
+                <% }) %>
+                
+            </tbody>
+        </table>
+    </div>
+</section>
