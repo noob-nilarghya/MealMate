@@ -4,6 +4,8 @@ const PaymentDetail= require('../../../models/paymentDetailModel');
 const { nanoid } = require("nanoid"); // generate unique payment recieptID
 const crypto= require('crypto');
 const moment= require('moment'); // This JS library is used to format date and time nicely
+const User= require('../../../models/userModel');
+const emailLib= require('../../../../email');
 
 
 // Create an instance of Razorpay
@@ -105,6 +107,9 @@ exports.createOrder= async(req, res) => {
     
             // as order is placed, so delete existing cart
             delete req.session.cart;
+
+            // new order mail will be sent to user.
+            await new emailLib(req.user, '').sendNewOrderMail();
     
             let query= Order.find({ customerID: req.user._id });
             query= query.sort('-createdAt');
@@ -150,6 +155,10 @@ exports.verifyPayment= async(req, res) => {
 
             // as order is placed, so delete existing cart
             delete req.session.cart;
+
+            // new order mail will be sent to user.
+            const myUser= await User.findOne({_id: customerID});
+            await new emailLib(myUser, '').sendNewOrderMail();
 
             const productOrderID= newOrder._id;
 

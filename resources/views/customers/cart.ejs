@@ -29,26 +29,28 @@
                                 style="padding-left: 2rem; width: 4rem;" src="/img/add.png" alt="add">
                         </div>
                     <% } %>
-                    <div class="flex items-center my-8">
-                        <img class="w-24 cartImg" src="/img/foodPic/<%= pizza.Full.item.image %>" alt="pizza">
-                        <div class="flex-1 ml-4">
-                            <h1>
-                                <%= pizza.Full.item.name %>
-                            </h1>
-                                <span>
-                                    Full
-                                </span>
+                    <% if(pizza.Full){ %>
+                        <div class="flex items-center my-8">
+                            <img class="w-24 cartImg" src="/img/foodPic/<%= pizza.Full.item.image %>" alt="pizza">
+                            <div class="flex-1 ml-4">
+                                <h1>
+                                    <%= pizza.Full.item.name %>
+                                </h1>
+                                    <span>
+                                        Full
+                                    </span>
+                            </div>
+                            <span class="flex-1">
+                                <%= pizza.Full.qty %> Pcs
+                            </span>
+                            <span class="font-bold text-lg">₹<%= pizza.Full.item.price * pizza.Full.qty %> </span>
+                        
+                            <img data-pizza="<%= JSON.stringify(pizza.Full) %>" class="removeItem"
+                                style="padding-left: 2rem; width: 4rem;" src="/img/remove.png" alt="remove">
+                            <img data-pizza="<%= JSON.stringify(pizza.Full) %>" class="addItemFromCart"
+                                style="padding-left: 2rem; width: 4rem;" src="/img/add.png" alt="add">
                         </div>
-                        <span class="flex-1">
-                            <%= pizza.Full.qty %> Pcs
-                        </span>
-                        <span class="font-bold text-lg">₹<%= pizza.Full.item.price * pizza.Full.qty %> </span>
-                    
-                        <img data-pizza="<%= JSON.stringify(pizza.Full) %>" class="removeItem"
-                            style="padding-left: 2rem; width: 4rem;" src="/img/remove.png" alt="remove">
-                        <img data-pizza="<%= JSON.stringify(pizza.Full) %>" class="addItemFromCart"
-                            style="padding-left: 2rem; width: 4rem;" src="/img/add.png" alt="add">
-                    </div>
+                    <% } %>
                 <% } %>
 
             </div>
@@ -93,8 +95,7 @@
             <div class="empty-cart py-16">
                 <div class="container mx-auto text-center">
                     <h1 class="text-3xl font-bold mb-2">Cart Empty 😕</h1>
-                    <p class="text-gray-500 text-lg mb-12">You probably haven't ordered a pizza yet. <br> To order a
-                        pizza, go to the main page.</p>
+                    <p class="text-gray-500 text-lg mb-12">You probably haven't ordered any item yet. <br> To order food item, go to the main page.</p>
                     <a href="/menu"
                         class="inline-block px-6 py-2 rounded-full btn-primary text-white font-bold mb-6">Order Food</a>
                     <img class="w-2/5 mx-auto" src="/img/empty-cart.png" alt="empty-cart">

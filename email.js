@@ -111,6 +111,10 @@ module.exports= class Email{
         await this.send('refundInitiated', 'Yay! Your refund has been initiated');
     }
 
+    async sendNewOrderMail(){
+        await this.send('newOrderPalced', 'Yay! Your order has been placed');
+    }
+
     async newFoodItem(){
         await this.send('itemAddedToMenu', 'Feeling hungry 😋? New item added to our menu, check it out');
     }

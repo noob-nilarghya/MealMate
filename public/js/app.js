@@ -34186,7 +34186,7 @@ if (mapID) {
         // that id in which map will be placed
         style: 'https://api.maptiler.com/maps/streets/style.json?key=k9IFWLIKRlgFFrLE2I20',
         // style of map
-        scrollZoom: false // scroll to zoom set to false
+        scrollZoom: true // scroll to zoom set to false
 
         // OTHER OPTIONS
         // zoom: 10
