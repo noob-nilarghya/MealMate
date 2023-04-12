@@ -2042,6 +2042,10 @@ footer a {
   .wrapper {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  .w-1\/2 {
+    width: 60%;
+  }
 }
 
 /**************************/

@@ -27,6 +27,12 @@
 		<input name="razorpay_payment_id" type="hidden" id="razorpay_payment_id" />
 		<input name="razorpay_order_id" type="hidden" id="razorpay_order_id"/>
 		<input name="razorpay_signature" type="hidden" id="razorpay_signature"/>
+
+		<!-- Info specifically to generate order on paymet success -->
+		<input data-phone="<%= _phone %>" name="order_phone" type="hidden" id="order_phone"/>
+		<input data-address="<%= _address %>" name="order_address" type="hidden" id="order_address"/>
+		<input data-customerid="<%= _customerID %>" name="order_customer_id" type="hidden" id="order_customer_id"/>
+		<input data-cartitems="<%= JSON.stringify(_cart_items) %>" name="order_cart_items" type="hidden" id="order_cart_items"/>
 	</form>
 </div>
 
@@ -38,7 +44,7 @@
 		const options = {
 			"key": razorpayKeyID,
 			"currency": "INR",
-			"name": "PizzaHub",
+			"name": "MealMate",
 			"description": "Online transaction portal",
 			
 			// "image": "{YOUR LOGO IMAGE LINK}",
@@ -48,11 +54,25 @@
 				document.getElementById('razorpay_payment_id').value= response.razorpay_payment_id;
 				document.getElementById('razorpay_order_id').value= response.razorpay_order_id;
 				document.getElementById('razorpay_signature').value= response.razorpay_signature;
+
+				//Info specifically to generate order on paymet success
+				const phone= document.getElementById('order_phone').dataset.phone; console.log(phone);
+				document.getElementById('order_phone').value= phone;
+				const address= document.getElementById('order_address').dataset.address;
+				document.getElementById('order_address').value= address;
+				const cusid= document.getElementById('order_customer_id').dataset.customerid;
+				document.getElementById('order_customer_id').value= cusid;
+				const cartItem= document.getElementById('order_cart_items').dataset.cartitems;
+				document.getElementById('order_cart_items').value= cartItem;
+
 				document.getElementById("paymentVerifyForm").submit();
 			},
 			"modal": {
 				ondismiss: function() {
-					alert(`Payment Failed`)
+					alert(`Payment Failed`);
+					window.setTimeout(() => {
+						location.assign('/cart'); // This is how we redirect to new route (here home route)
+					}, 1000);
 				}
 			},
 			"theme": {
