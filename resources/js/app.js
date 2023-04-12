@@ -12,7 +12,7 @@ document.querySelector('.logoImg').addEventListener('click', (evt) => {
 if (document.querySelector('.section-hero')) {
     // GSAP animation for hero image
     gsap.from(".hero-img", {
-        duration: 2,
+        duration: 3,
         scale: 0.5,
         opacity: 0,
         delay: 0.5,
@@ -21,7 +21,10 @@ if (document.querySelector('.section-hero')) {
         force3D: true
     });
     // GSAP animation for hero text box
-    gsap.from(".hero-text-box", { x: -400 });
+    gsap.from(".hero-text-box", { 
+        duration: 2.5,
+        x: -400 
+    });
 }
 
 // Smooth Scroll

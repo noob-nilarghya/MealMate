@@ -33156,7 +33156,7 @@ document.querySelector('.logoImg').addEventListener('click', function (evt) {
 if (document.querySelector('.section-hero')) {
   // GSAP animation for hero image
   gsap_index_js__WEBPACK_IMPORTED_MODULE_4__["gsap"].from(".hero-img", {
-    duration: 2,
+    duration: 3,
     scale: 0.5,
     opacity: 0,
     delay: 0.5,
@@ -33166,6 +33166,7 @@ if (document.querySelector('.section-hero')) {
   });
   // GSAP animation for hero text box
   gsap_index_js__WEBPACK_IMPORTED_MODULE_4__["gsap"].from(".hero-text-box", {
+    duration: 2.5,
     x: -400
   });
 }
@@ -34295,8 +34296,8 @@ if (isAdminPage) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\NILARGHYA ROY\Desktop\PizzaHub\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\NILARGHYA ROY\Desktop\PizzaHub\resources\scss\app.scss */"./resources/scss/app.scss");
+__webpack_require__(/*! C:\Users\NILARGHYA ROY\Desktop\MealMate\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\NILARGHYA ROY\Desktop\MealMate\resources\scss\app.scss */"./resources/scss/app.scss");
 
 
 /***/ })

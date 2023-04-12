@@ -4,7 +4,9 @@ exports.viewCart= async (req, res) => {
         res.status(200).render('customers/cart'); // remmber we have set 'req.session' to res.locals.session in global middleware
         // so each and every ejs file will get the session info in 'session' variable
     } catch(err) {
-        res.status(404).render('error'); 
+        res.status(404).render('error', {
+            message: "Can't view cart page :("
+        }); 
     }
 }
 

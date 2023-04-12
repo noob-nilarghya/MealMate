@@ -20,7 +20,9 @@ exports.fetchCustomerOrder= async (req, res) => {
         });
 
     } catch (err) {
-        res.status(404).render('error');
+        res.status(404).render('error', {
+            message: "Can't fetch your orders :("
+        });
     }
 }
 
@@ -42,7 +44,9 @@ exports.fetchCustomerSingleOrder= async (req, res) => {
         });
 
     } catch (err) {
-        res.status(404).render('error');
+        res.status(404).render('error', {
+            message: err.message
+        });
     }
 }
 

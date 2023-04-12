@@ -33,7 +33,9 @@ exports.fetchAdminOrder= async (req, res) => {
         });
 
     } catch (err) {
-        res.status(404).render('error');
+        res.status(404).render('error', {
+            message: "Can't show active orders :("
+        });
     }
 }
 
@@ -56,7 +58,9 @@ exports.statusUpdateAdminOrder= async (req, res) => {
         res.status(200).redirect('/admin-order');
         
     } catch (err) {
-        res.status(404).render('error');
+        res.status(404).render('error', {
+            message: "Can't view order status update page :("
+        });
     }
 }
 
@@ -65,7 +69,9 @@ exports.viewAddFood= async (req, res) => {
     try{
         res.status(200).render('admin/addFood');
     } catch (err) {
-        res.status(404).render('error');
+        res.status(404).render('error', {
+            message: "Can't view add food form :("
+        });
     }
 }
 
@@ -141,7 +147,7 @@ exports.fetchIssuedForRefund= async (req, res) => {
 
     try{
         // let query= Order.find({ customerID: req.user._id });
-        
+        console.log("here");
         let refundRequired= Order.find( { status: 'cancelled' ,  paymentType: 'online' } ); 
         refundRequired= refundRequired.populate({
             path: 'customerID',
@@ -175,7 +181,9 @@ exports.fetchIssuedForRefund= async (req, res) => {
         });
 
     } catch (err) {
-        res.status(404).render('error');
+        res.status(404).render('error', {
+            message: "Can't view refund detail page :("
+        });
     }
 }
 
@@ -195,17 +203,19 @@ exports.refundStatusUpdate= async (req, res) => {
                     new: true,
                     runValidators: true
                 });
-
                 // Refund mail will be sent to user.
-                const user= User.findOne({_id: updatedPaymentDetail.customerID});
-                const price= updatedPaymentDetail.amount/100;
+                const user= await User.findOne({_id: updatedPaymentDetail.customerID});
+                let price= updatedPaymentDetail.amount/100;
                 price= price.toString(10);
+
                 await new emailLib(user, price).sendRefundMail();
             }
         }        
 
         res.status(200).redirect('/admin-order-refund-status');
     } catch (err) {
-        res.status(404).render('error');
+        res.status(404).render('error', {
+            message: "Can't view refund status page :("
+        });
     }
 }

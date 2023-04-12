@@ -124,7 +124,9 @@ exports.createOrder= async(req, res) => {
                 moment: moment // we are sending whole library to front-end 😂 (in order to format dates)
             });
         } catch (err) {
-            res.status(404).render('error');
+            res.status(404).render('error', {
+                message: "Can't place order :("
+            });
         }
     }
 

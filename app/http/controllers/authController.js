@@ -8,9 +8,13 @@ const emailLib= require('../../../email');
 
 exports.viewLogin= async (req, res) => {
     try{
-        res.status(200).render('auth/login');
+        res.status(200).render('auth/login', {
+            message: ''
+        });
     } catch(err) {
-        res.status(404).render('error');
+        res.status(404).render('error', {
+            message: "Can't view log in page :("
+        });
     }
 }
 
@@ -18,7 +22,9 @@ exports.viewRegister= async (req, res) => {
     try{
         res.status(200).render('auth/register');
     } catch(err) {
-        res.status(404).render('error');
+        res.status(404).render('error', {
+            message: "Can't view log in page :("
+        });
     }
 }
 
@@ -26,7 +32,9 @@ exports.viewForgotPassword= async (req, res) => {
     try{
         res.status(200).render('auth/forgotPassword');
     } catch(err) {
-        res.status(404).render('error');
+        res.status(404).render('error', {
+            message: "Can't view forgot password page :("
+        });
     }
 }
 
@@ -34,7 +42,9 @@ exports.viewResetPassword= async (req, res) => {
     try{
         res.status(200).render('auth/resetPassword');
     } catch(err) {
-        res.status(404).render('error');
+        res.status(404).render('error', {
+            message: "Can't view reset password page :("
+        });
     }
 }
 
@@ -161,8 +171,7 @@ exports.protectedAccess= async (req, res, next) => {
         next();
 
     } catch (err) {
-        res.status(404).json({ // end req-res cycle by sending response
-            status: "fail",
+        res.status(200).render('auth/login', {
             message: err.message
         });
     }
@@ -211,8 +220,7 @@ exports.allowAdmin= (...roles) =>{
         // roles: ['admin']
         if(roles.includes(req.user.role) === false){ // as we have saved 'uniqueUser' in 'user' property of 'req' object in prev middleware
             const msg= `You are ${req.user.role}. You do not have permission to perform this operation..`;
-            res.status(404).json({
-                status: "fail",
+            res.status(404).render('error', {
                 message: msg
             });
             // end of req-res cycle

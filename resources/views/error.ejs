@@ -6,6 +6,9 @@
             </div>
             <h2>404 - Page not found</h2>
             <p>The page you are looking for might have been removed or is temporarily unavailable.</p>
+            <% if(message!=''){ %>
+                <p style="display: flex; justify-content: center; color: red; font-weight: 700;"><%= message %></p>
+            <% } %>
             <a href="/">Go To Homepage</a>
         </div>
     </div>
