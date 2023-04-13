@@ -377,6 +377,10 @@ section.status {
     height: auto;
     border-radius: 100%;
     cursor: pointer;
+    transition: all 0.3s;
+}
+.userImg:hover{
+    transform: scale(1.1);
 }
 
 .img-change,
