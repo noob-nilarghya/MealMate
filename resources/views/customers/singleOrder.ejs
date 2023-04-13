@@ -18,21 +18,23 @@
                     <span class="font-bold text-lg">₹<%= pizza.Half.item.price %> X <%= pizza.Half.qty %> = <%= pizza.Half.item.price * pizza.Half.qty %> </span>
                 </div>
             <% } %>
-            <div class="flex items-center my-8">
-                <img class="w-24 cartImg" src="/img/foodPic/<%= pizza.Full.item.image %>" alt="pizza">
-                <div class="flex-1 ml-4">
-                    <h1>
-                        <%= pizza.Full.item.name %>
-                    </h1>
-                        <span>
-                            Full
-                        </span>
+            <% if(pizza.Full){ %>
+                <div class="flex items-center my-8">
+                    <img class="w-24 cartImg" src="/img/foodPic/<%= pizza.Full.item.image %>" alt="pizza">
+                    <div class="flex-1 ml-4">
+                        <h1>
+                            <%= pizza.Full.item.name %>
+                        </h1>
+                            <span>
+                                Full
+                            </span>
+                    </div>
+                    <span class="flex-1">
+                        <%= pizza.Full.qty %> Pcs
+                    </span>
+                    <span class="font-bold text-lg">₹<%= pizza.Full.item.price %> X <%=pizza.Full.qty %> = <%= pizza.Full.item.price * pizza.Full.qty %> </span>
                 </div>
-                <span class="flex-1">
-                    <%= pizza.Full.qty %> Pcs
-                </span>
-                <span class="font-bold text-lg">₹<%= pizza.Full.item.price %> X <%=pizza.Full.qty %> = <%= pizza.Full.item.price * pizza.Full.qty %> </span>
-            </div>
+            <% } %>
         <% } %>
         <% if(!(order.status === 'cancelled' || order.status === 'refunded' || order.status === 'reject-refund')){ %>
             <div class="status-box w-full lg:w-2/3 mx-auto">
