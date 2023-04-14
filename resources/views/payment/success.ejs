@@ -24,7 +24,7 @@
 				</div>
 				<div class="eachItem">
 					<p class="bold">Created at: </p>
-					<p class="propertyValue"> <%- moment(paymentDetail.createdAt).format('MMMM Do YYYY, h:mm a') %></p>
+					<p class="propertyValue"> <%- moment(paymentDetail.createdAt).add(5, 'h').add(30, 'm').format('MMMM Do YYYY, h:mm a') %></p>
 				</div>
 			</div>
 		</div>
