@@ -19,7 +19,6 @@ const Emitter = require('events'); // this is a inbuilt package in node, use to 
 
 
 
-
 const PORT = process.env.PORT || 3000;
 
 // This is how we connect cloud DB atlas with application
