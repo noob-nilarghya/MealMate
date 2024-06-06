@@ -65,6 +65,7 @@ app.use(expressLayout);
 app.set('view engine','ejs'); 
 app.set('views', path.join(__dirname,'/resources/views')); // views ke andaar ka maal template engine ko dikhega
 app.use(express.static(path.join(__dirname, 'public'))); 
+app.use(express.static(path.join(process.cwd())));
 
 
 app.use(express.json( { limit: '10kb' } )); // required (called middleware). // response data more than 10kb is not allowed
@@ -82,6 +83,10 @@ app.use((req, res, next) => {
 const webRouter= require('./routes/webRouter');
 
 app.use('/', webRouter); // route mounting
+
+app.get('/sitemap.xml', (req, res) => {
+    res.sendFile(path.join(process.cwd(), "sitemap.xml"));
+})
 
 
 const server = app.listen(PORT,() => {
