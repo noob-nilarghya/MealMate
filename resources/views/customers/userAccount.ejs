@@ -18,7 +18,7 @@
     </div>
     <div class="infoOverview" style="max-height: 450px;">
         <div class="img-change">
-            <img class="userImg" src="/img/userPic/<%= user.photo %>" alt="user"> 
+            <img class="userImg" src="/img/userPic/<%= user.photo %>" alt="user" onerror="this.onerror=null;this.src='/img/userPic/default.jpeg';"> 
         </div>
         <div class="userInfo">
             <div class="infoDiv">User Account Information</div>

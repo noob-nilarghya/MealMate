@@ -5,6 +5,8 @@ const bcrypt= require('bcryptjs');
 const util= require('util'); // This is inbult to node. We we use 'promisify' fn of this module to promisify JWT verify fn (see protectedAccess)
 const crypto= require('crypto');
 const emailLib= require('../../../email');
+const path= require('path');
+const fs = require('fs');
 
 exports.viewLogin= async (req, res) => {
     try{
@@ -97,14 +99,14 @@ exports.loginUser= async (req, res) => {
         query= query.select('+password'); // as password field is not visible
 
         const user= await query;
-        if(!user){ throw new Error('User not recognized!...'); }
+        if(!user){ throw new Error('User or password not recognized!...'); }
 
         // password in DB is hashed, so we need to decrypt it
         const correctPwd= await bcrypt.compare(password, user.password);
         // 1st arg is non-hashed pwd, 2nd one is hashed pwd
 
         if(!correctPwd){
-            throw new Error('Password is incorrect ... ');
+            throw new Error('User or password not recognized!...');
         }
 
         // step3: If all okay. Send user the JWT and let user login
@@ -363,14 +365,24 @@ exports.updateInfo= async (req, res) => {
 
         // 2) Update rest of the filtered fields
         const filterField= filterObj(req.body, 'username', 'email', 'phone');
+        let oldPhotoName=''; // to delete old photo
+
         if(req.file) { // if there is any field name 'req.file'. Then it means user wants to upload picture
             filterField.photo= req.file.filename; // add a new field named 'photo'
             // 'req.file.filename' store the name (that we have specified in 'multerStorage') of uploaded photo
+            oldPhotoName= req.user.photo; // to remove old photo
         }
-        console.log(filterField);
 
         if(!filterField){
             throw new Error("There is no field to update ... ");
+        }
+
+        if(oldPhotoName !== '' && oldPhotoName !== 'default.jpeg') {
+            const filePath = path.join(process.cwd(), 'public', 'img', 'userPic', oldPhotoName);
+            fs.unlink(filePath, (err) => {
+                if (err) { console.log('Error deleting file!'); } 
+                else { console.log('File deleted successfully!'); }
+            });
         }
 
         // 3) Update users document.   find only among active users --> see 'find' middleware in model

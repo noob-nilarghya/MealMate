@@ -35,23 +35,7 @@ exports.userPhotoProcessing = async (req, res, next) => {
     req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`; // to use it in 'authController->updateInfo'
 
     await sharp(req.file.buffer) // as raw uploaded image is stored in buffer memory
-        .resize(500, 500) // resize to 500px X 500px
-        .toFormat('jpeg')
-        .jpeg( {quality: 90} ) // retain 90% of original quality
-        .toFile(`public/img/userPic/${req.file.filename}`); // retain 90% of original quality
-
-    next();
-}
-
-const myRnId = () => parseInt(Date.now() * Math.random());
-
-exports.foodPhotoProcessing = async (req, res, next) => {
-    if(!req.file){ return next(); } // if there is upload, it should be there in 'req.file'
-
-    req.file.filename = `food-${myRnId()}-${Date.now()}.jpeg`; // to use it in 'authController->updateInfo'
-
-    await sharp(req.file.buffer) // as raw uploaded image is stored in buffer memory
-        .resize(500, 500) // resize to 500px X 500px
+        .resize(150, 150) // resize to 150px X 150px
         .toFormat('jpeg')
         .jpeg( {quality: 90} ) // retain 90% of original quality
         .toFile(`public/img/userPic/${req.file.filename}`); // retain 90% of original quality

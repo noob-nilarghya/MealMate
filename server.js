@@ -23,13 +23,7 @@ const PORT = process.env.PORT || 3000;
 
 // This is how we connect cloud DB atlas with application
 const DB = process.env.APP_ATLAS_CONNECTION_STRING ;
-mongoose.connect(DB, {
-    // ye hamesha copy-paste. No need to understand
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true
-});
+mongoose.connect(DB);
 
 const connection = mongoose.connection;
 connection.on('error', err => {

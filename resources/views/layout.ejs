@@ -76,7 +76,7 @@
                         </li>
                         <% if(user){ %>
                             <li class="nav-item navSec">
-                                <a style="display: flex; gap: 0.5rem;" href="/me" class="experience-nav navSec"><img style="width: 2rem; border-radius: 100%;" src="/img/userPic/<%= user.photo %>" alt="user"> <p class="dropDownName"><%= user.username.split(' ')[0] %></p></a>
+                                <a style="display: flex; gap: 0.5rem;" href="/me" class="experience-nav navSec"><img style="width: 2rem; border-radius: 100%;" src="/img/userPic/<%= user.photo %>" alt="user" onerror="this.onerror=null;this.src='/img/userPic/default.jpeg';"> <p class="dropDownName"><%= user.username.split(' ')[0] %></p></a>
                             </li>
                             <li class="nav-item navSec">
                                 <a class="skill-nav navSec logoutBtn" href="#">Logout</a>
@@ -123,9 +123,9 @@
         </div>
         <div class="footercol3">
             <div class="socialLink">
-                <a href="/"><i class="lab la-facebook socialLogo"></i></a>
-                <a href="/"><i class="lab la-instagram socialLogo"></i></a>
-                <a href="/"><i class="lab la-twitter socialLogo"></i></a>
+                <a href="/" target="_blank"><i class="lab la-facebook socialLogo"></i></a>
+                <a href="/" target="_blank"><i class="lab la-instagram socialLogo"></i></a>
+                <a href="/" target="_blank"><i class="lab la-twitter socialLogo"></i></a>
             </div>
             <div class="contactLink">
                 <a href="mailto:roynilarghya@gmail.com?subject=MealMate%20||%20Query:%20" ><i class="las la-phone-alt updateIcon"></i>Contact Us</a>
