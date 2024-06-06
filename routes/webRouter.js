@@ -117,6 +117,11 @@ router.route('/admin-backend-add-food')
             foodPhotoController.foodPhotoProcessing,
             adminOrderController.addFoodBackend);
 
+router.route('/sitemap.xml')
+    .get((req, res) => {
+        res.sendFile(path.join(process.cwd(), "sitemap.xml"));
+    })
+
 router.route('*').get(homeController.viewError);
 
 // Bhosdike total 31 routes hai, isme tera ghar a jayenga chadarmod

@@ -84,10 +84,6 @@ const webRouter= require('./routes/webRouter');
 
 app.use('/', webRouter); // route mounting
 
-app.get('/sitemap.xml', (req, res) => {
-    res.sendFile(path.join(process.cwd(), "sitemap.xml"));
-})
-
 
 const server = app.listen(PORT,() => {
     console.log(`Listening on port ${PORT}`);
